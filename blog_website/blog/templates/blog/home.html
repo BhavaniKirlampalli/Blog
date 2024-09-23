@@ -1,0 +1,88 @@
+<!-- blog/templates/blog/home.html -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Home</title>
+    
+    <!-- Load static files -->
+    <!-- Link to your CSS file (replace 'your_css_file.css' with the actual file name) -->
+    <link rel="stylesheet" href="{% static 'blog/style.css' %}">
+    
+    <!-- Example style for layout and visual improvement -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .container {
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 800px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .post {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .post h2 {
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+        .post p {
+            margin: 0.5em 0;
+        }
+        .post-meta {
+            font-size: 0.9em;
+            color: #777;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #4CAF50;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+       
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Blog</h1>
+    </header>
+    
+    <div class="container">
+        {% if posts %}
+            {% for post in posts %}
+                <div class="post">
+                    <h2>{{ post.title }}</h2>
+                    <p class="post-meta">By {{ post.author }} on {{ post.date_posted }}</p>
+                    <p>{{ post.content }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No posts available at the moment.</p>
+        {% endif %}
+    </div>
+    
+    <footer>
+        <p>&copy; 2024 Blog Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>
